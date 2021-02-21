@@ -22,14 +22,17 @@ class Solution(object):
         """
         return self.isValidBSTRec(root)
 
-    def isValidBSTRec(self, node, low_boundary=float('-inf'),
-                      high_boundary=float('inf')):
+    def isValidBSTRec(
+        self, node, low_boundary=float("-inf"), high_boundary=float("inf")
+    ):
         if not node:
             return True
 
-        if ((node.val > low_boundary and node.val < high_boundary) and
-                self.isValidBSTRec(node.left, low_boundary, node.val) and
-                self.isValidBSTRec(node.right, node.val, high_boundary)):
+        if (
+            (node.val > low_boundary and node.val < high_boundary)
+            and self.isValidBSTRec(node.left, low_boundary, node.val)
+            and self.isValidBSTRec(node.right, node.val, high_boundary)
+        ):
             return True
 
         return False
