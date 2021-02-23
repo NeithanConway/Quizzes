@@ -31,7 +31,7 @@ class Solution:
                     min = mid + 1
             elif arr[mid] < target:
                 min = mid + 1
-            elif arr[mid] > target:
+            else:
                 max = mid - 1
 
         return ret
