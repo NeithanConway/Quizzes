@@ -10,27 +10,10 @@ from typing import List
 
 class Solution:
     def reconstructQueue(self, people: List[List[int]]) -> List[List[int]]:
-        people = sorted(people, key=lambda human: (human[1], human[0]))
+        people = sorted(people, key=lambda human: (-human[0], human[1]))
         sorted_people = []
-
-        while people:
-            high_counter = 0
-            new_human = people.pop(0)
-            for i, human in enumerate(sorted_people):
-                if human[0] >= new_human[0]:
-                    high_counter += 1
-                if new_human[1] == high_counter:
-                    if (
-                        len(sorted_people) > i + 1
-                        and sorted_people[i + 1][0] < new_human[0]
-                    ):
-                        continue
-                    while i < len(sorted_people) - 1:
-                        people.insert(0, sorted_people.pop())
-                    break
-
-            sorted_people.append(new_human)
-
+        for human in people:
+            sorted_people.insert(human[1], human)
         return sorted_people
 
 
